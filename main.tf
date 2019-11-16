@@ -1,9 +1,9 @@
 terraform {
-  backend "s3" {
+  /* backend "s3" {
     bucket = "rpa-terraform-bucket"
     key    = "terraform.tfstate"
     region = "eu-west-1"
-  }
+  } */
 }
 
 provider "aws" {
@@ -11,9 +11,9 @@ provider "aws" {
 }
 
 resource "aws_instance" "web" {
-  ami = "ami-60349919"
+  ami = "ami-1d300869"
   instance_type = "t2.micro"
   tags = {
-    Name = "ec2_instance"
+    Name = "wordpress_instance"
   }
 }

@@ -1,10 +1,6 @@
 // Jenkinsfile
 def COLOR_MAP = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', 'ABORTED': 'danger']
 
-def getBuildUser() {
-    return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
-}
-
 pipeline {
   agent any
 
@@ -53,13 +49,9 @@ pipeline {
   post {
     always {
       script {
-        BUILD_USER = getBuildUser()
+        
       }
-      echo 'I will always say Hello again!'
-    
-      slackSend channel: '#rpa-devops',
-        color: COLOR_MAP[currentBuild.currentResult],
-        message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${BUILD_USER}\n More info at: ${env.BUILD_URL}"
+      echo 'This is a success!'
     }  
   }
 } 
