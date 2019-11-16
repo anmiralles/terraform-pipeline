@@ -48,9 +48,6 @@ pipeline {
   }
   post {
     always {
-      script {
-        
-      }
       echo 'This is a success!'
     }  
   }
